@@ -1,0 +1,15 @@
+Script started on 2026-03-24 16:56:35-06:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="55" LINES="16"]
+[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/answers[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/answers[00m$ [K[A]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/answers[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/answers[00m$ docker run -it ubuntu bash
+[?2004lUnable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+
+[1A[2K817807f3c64e: Pulling fs layer [1B[1A[2K817807f3c64e: Downloading  299.7kB/29.73MB[1B[1A[2K817807f3c64e: Downloading  3.719MB/29.73MB[1B[1A[2K817807f3c64e: Downloading  7.442MB/29.73MB[1B[1A[2K817807f3c64e: Downloading  11.16MB/29.73MB[1B[1A[2K817807f3c64e: Downloading  14.88MB/29.73MB[1B[1A[2K817807f3c64e: Downloading   19.5MB/29.73MB[1B[1A[2K817807f3c64e: Downloading  23.51MB/29.73MB[1B[1A[2K817807f3c64e: Downloading  26.92MB/29.73MB[1B[1A[2K817807f3c64e: Verifying Checksum [1B[1A[2K817807f3c64e: Download complete [1B[1A[2K817807f3c64e: Extracting  327.7kB/29.73MB[1B[1A[2K817807f3c64e: Extracting  2.294MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  3.932MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  5.898MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  7.209MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  8.192MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  9.503MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  11.14MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  14.09MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  17.04MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  20.32MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  22.61MB/29.73MB[1B[1A[2K817807f3c64e: Extracting   24.9MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  25.56MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  26.54MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  27.85MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  28.18MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  28.84MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  29.49MB/29.73MB[1B[1A[2K817807f3c64e: Extracting  29.73MB/29.73MB[1B[1A[2K817807f3c64e: Pull complete [1BDigest: sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c
+Status: Downloaded newer image for ubuntu:latest
+[?2004h]0;root@d0daa1f7a9d1: /root@d0daa1f7a9d1:/# mkdir /use r/src/app
+[?2004l[?2004h]0;root@d0daa1f7a9d1: /root@d0daa1f7a9d1:/# touch /usr/src/app/index.js
+[?2004l[?2004h]0;root@d0daa1f7a9d1: /root@d0daa1f7a9d1:/# [K[K]0;root@d0daa1f7a9d1: /root@d0daa1f7a9d1:/# [K]0;root@d0daa1f7a9d1: /root@d0daa1f7a9d1:/# exit
+[?2004lexit
+[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/answers[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/answers[00m$ [?2004l
+exit
+
+Script done on 2026-03-24 16:59:15-06:00 [COMMAND_EXIT_CODE="0"]
