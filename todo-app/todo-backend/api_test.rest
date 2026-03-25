@@ -1,0 +1,22 @@
+####
+GET http://localhost:3000/todos
+
+###
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "hello"
+}
+
+###
+GET http://localhost:3000/todos/69c455f5f8f0fcc1a2ff3e31
+
+###
+PUT http://localhost:3000/todos/69c455f5f8f0fcc1a2ff3e31
+Content-Type: application/json
+
+{
+  "text": "world",
+  "done": "true"
+}
