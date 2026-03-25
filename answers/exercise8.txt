@@ -1,0 +1,91 @@
+Script started on 2026-03-25 16:42:43-06:00 [TERM="xterm-256color" TTY="/dev/pts/12" COLUMNS="95" LINES="21"]
+[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/answers[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/answers[00m$ cd ../todo-app/todo-backend/
+[?2004l[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/todo-app/todo-backend[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/todo-app/todo-backend[00m$ docker container ls
+[?2004lCONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS                  PORTS                                                    NAMES
+81aa3f8c81ea   mongo       "docker-entrypoint.s…"   5 minutes ago    Up 5 minutes            0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp            todo-backend-mongo-1
+06cb17b1428f   nginx       "/docker-entrypoint.…"   28 minutes ago   Up 28 minutes           0.0.0.0:8080->80/tcp, [::]:8080->80/tcp                  elated_jemison
+a6a1db0511e4   mysql:8.0   "docker-entrypoint.s…"   2 months ago     Up 25 hours (healthy)   33060/tcp, 0.0.0.0:6609->3306/tcp, [::]:6609->3306/tcp   molba-mysql
+ab5f09890652   mysql:8.0   "docker-entrypoint.s…"   2 months ago     Up 25 hours             0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp   springbootex-mysql
+[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/todo-app/todo-backend[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/todo-app/todo-backend[00m$ docker exec -it todo -backend-mongo-1 bash
+[?2004l[?2004hroot@81aa3f8c81ea:/# mongosh -u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	69c465109dfcd214acd805da
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.1[0m
+Using MongoDB:		8.2.6
+[1m[33mUsing Mongosh[0m:		2.8.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+[1G[0J [1G[?2004h[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2026-03-25T22:37:42.805+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-03-25T22:37:44.459+00:00: Soft rlimits for open file descriptors too low
+   2026-03-25T22:37:44.460+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-03-25T22:37:44.460+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-03-25T22:37:44.460+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-03-25T22:37:44.460+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         36.00 KiB
+[1mlocal[0m          80.00 KiB
+[1mthe_database[0m   68.00 KiB
+[1G[0Jtest> [7Guse the da[1G[0Jtest> use the d[16G[1G[0Jtest> use the [15G[1G[0Jtest> use the[14G_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find({})
+[
+  {
+    _id: ObjectId([32m'69c452b496a6f623d9d805db'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'69c452b496a6f623d9d805dc'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'69c455f5f8f0fcc1a2ff3e31'[39m),
+    text: [32m'world'[39m,
+    done: [33mtrue[39m,
+    __v: [33m0[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todos.n[1G[0Jthe_database> db.todos.[24GinsertOne({text[33mtext[39m: [32m'[39m[32mi[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m [32mb[39m[32me[39m[32ml[39m[32mt[39m[32m'[39m, d[36mdo[39mdone: [1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'increase the number of tools in my tool belt'[39m, [33mdone[39m: f [1Gals[33mfalse[39m})
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId([32m'69c4659f9dfcd214acd805db'[39m)
+}
+[1G[0Jthe_database> [15Gd[36mdo[39m[1G[0Jthe_database> d[16Gb.todos.find({})
+[
+  {
+    _id: ObjectId([32m'69c452b496a6f623d9d805db'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'69c452b496a6f623d9d805dc'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'69c455f5f8f0fcc1a2ff3e31'[39m),
+    text: [32m'world'[39m,
+    done: [33mtrue[39m,
+    __v: [33m0[39m
+  },
+  {
+    _id: ObjectId([32m'69c4659f9dfcd214acd805db'[39m),
+    text: [32m'increase the number of tools in my tool belt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004l]0;[?2004hroot@81aa3f8c81ea:/# exit
+[?2004lexit
+[?2004h]0;euihyunbaek88@DESKTOP-BJFRF3V: ~/repos/fs-containers/todo-app/todo-backend[01;32meuihyunbaek88@DESKTOP-BJFRF3V[00m:[01;34m~/repos/fs-containers/todo-app/todo-backend[00m$ [?2004l
+exit
+
+Script done on 2026-03-25 16:46:25-06:00 [COMMAND_EXIT_CODE="0"]
