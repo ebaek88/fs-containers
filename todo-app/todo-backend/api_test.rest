@@ -20,3 +20,6 @@ Content-Type: application/json
   "text": "world",
   "done": "true"
 }
+
+###
+GET http://localhost:3000/statistics

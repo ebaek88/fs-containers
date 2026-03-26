@@ -1,32 +1,39 @@
-const redis = require('redis')
-const { REDIS_URL } = require('../util/config')
+const redis = require("redis");
+// since Redis v4, promisify is no longer needed since client.get() and client.set() themselves return Promise
+const { REDIS_URL } = require("../util/config");
 
-let set
-let get
+let client;
 
-if (!REDIS_URL) {
-  const redisIsDisabled = () => {
-    console.log('No REDIS_URL set, Redis is disabled')
-    return null
+async function connectRedis() {
+  if (!REDIS_URL) {
+    console.log("No REDIS_URL set, Redis is disabled");
+    return null;
   }
-  set = redisIsDisabled
-  get = redisIsDisabled
-} else {
-  let client = redis.createClient({
-    url: REDIS_URL
-  })
 
-  client.on('error', (err) => console.log('Redis Client Error', err))
-  
-  client.connect().then(() => {
-    console.log('Connected to Redis')
-  })
-    
-  get = (...args) => client.get(...args)
-  set = (...args) => client.set(...args)
+  client = redis.createClient({ url: REDIS_URL });
+
+  client.on("error", (err) => console.error("Redis Client Error:", err));
+
+  await client.connect();
+  console.log("Connected to Redis");
+
+  const existingValue = await client.get("added_todos");
+  if (existingValue === null) {
+    await client.set("added_todos", 0);
+  }
+
+  return client;
 }
+
+connectRedis();
 
 module.exports = {
-  get,
-  set,
-}
+  getAsync: async (key) => {
+    if (!client) return null;
+    return await client.get(key);
+  },
+  setAsync: async (key, value) => {
+    if (!client) return null;
+    return await client.set(key, value);
+  },
+};
