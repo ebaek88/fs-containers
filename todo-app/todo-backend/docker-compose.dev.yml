@@ -17,3 +17,7 @@ services:
     container_name: todo-backend-redis
     ports:
       - 6379:6379
+    command: ["redis-server", "--appendonly", "yes"] # Overwrite the CMD
+    volumes:
+      # for WSL, absolute path must be used instead of relative path
+      - /home/euihyunbaek88/repos/fs-containers/todo-app/todo-backend/redis_data:/data

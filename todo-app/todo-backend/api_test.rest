@@ -26,6 +26,14 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "hello5"
+}
+
+###
 GET http://localhost:3000/todos/69c455f5f8f0fcc1a2ff3e31
 
 ###
