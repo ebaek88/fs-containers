@@ -6,8 +6,8 @@ services:
       dockerfile: ./todo-frontend/dev.dockerfile # This will simply tell which dockerfile to read
     volumes:
       - ./todo-frontend:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
-    ports:
-      - 5173:5173
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8080/api/
     container_name: todo-front-dev # This will name the container todo-front-dev
 
   api:
@@ -15,8 +15,6 @@ services:
     build:
       context: ./todo-backend/
       dockerfile: ./todo-backend/dev.Dockerfile
-    ports:
-      - 3000:3000
     environment:
       MONGO_URL: mongodb://the_username:the_password@mongo:27017/the_database # for the Compose network, we use mongo(Docker Compose service name) instead of localhost and 27017 instead of 3456
       REDIS_URL: redis://redis:6379 # for the Compose network, we use redis(Docker Compose service name) instead of localhost and 6379(in this case, it is same as the "external" port)
