@@ -1,21 +1,19 @@
 services:
-  app-dev:
-    image: todo-front-dev
+  app:
+    image: todo-front
     build:
       context: ./todo-frontend/ # The context will pick this directory as the "build context"
-      dockerfile: dev.Dockerfile # In Compose, dockerfile paths are resolved from build.context
-    volumes:
-      - ./todo-frontend:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
-    environment:
-      # In dev, Vite runs inside the container, so this can stay a normal runtime env var.
-      - VITE_BACKEND_URL=http://localhost:8080/api/
-    container_name: todo-front-dev # This will name the container todo-front-dev
+      dockerfile: Dockerfile # In Compose, dockerfile paths are resolved from build.context, not from this compose file
+      args:
+        # Vite reads this when the frontend image is built, so this must be a build arg in production.
+        VITE_BACKEND_URL: http://localhost:8080/api/
+    container_name: todo-front # This will name the container todo-front
 
-  api-dev:
-    image: todo-backend-dev
+  api:
+    image: todo-backend
     build:
       context: ./todo-backend/
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
     environment:
       MONGO_URL: mongodb://the_username:the_password@mongo:27017/the_database # for the Compose network, we use mongo(Docker Compose service name) instead of localhost and 27017 instead of 3456
       REDIS_URL: redis://redis:6379 # for the Compose network, we use redis(Docker Compose service name) instead of localhost and 6379(in this case, it is same as the "external" port)
@@ -25,7 +23,7 @@ services:
     volumes:
       - /home/euihyunbaek88/repos/fs-containers/todo-app/todo-backend:/usr/src/app
       - /usr/src/app/node_modules
-    container_name: todo-api-dev
+    container_name: todo-api
 
   mongo:
     image: mongo
@@ -53,10 +51,10 @@ services:
   nginx:
     image: nginx:1.29
     volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - 8080:80
     container_name: todo-reverse-proxy
     depends_on:
-      - app-dev # wait for the frontend container to be started
-      - api-dev
+      - app # wait for the frontend container to be started
+      - api
